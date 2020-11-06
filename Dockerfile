@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y \
 	&& pecl install memcached \
 	&& apt-get clean all && rm -rf /var/lib/apt/lists/
 
-COPY ./.docker/appserver/composer-install.sh /usr/local/bin/composer-install.sh
+COPY ./composer-install.sh /usr/local/bin/composer-install.sh
 RUN /usr/local/bin/composer-install.sh
 
 WORKDIR /var/www/html
