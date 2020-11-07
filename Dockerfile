@@ -35,5 +35,6 @@ RUN apt-get update && apt-get install -y \
 
 COPY ./composer-install.sh /usr/local/bin/composer-install.sh
 RUN /usr/local/bin/composer-install.sh
+RUN composer global require hirak/prestissimo
 
 WORKDIR /var/www/html
