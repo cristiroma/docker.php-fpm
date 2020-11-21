@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
 		libwebp-dev \
 		libxml2-dev \
 		libzip-dev \
-		procps sudo unzip vim-tiny wget
+		procps sudo unzip vim-tiny wget \
 		zlib1g-dev \
 	&& docker-php-ext-install -j$(nproc) bz2 \
 	&& docker-php-ext-configure gd --with-webp=/usr/include/ --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install -j$(nproc) gd \
