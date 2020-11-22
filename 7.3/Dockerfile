@@ -1,5 +1,7 @@
 FROM php:7.3-fpm
 
+ARG APCU_VERSION=5.1.11
+
 COPY ./composer-install.sh /usr/local/bin/composer-install.sh
 RUN apt-get update && apt-get install -y \
 		g++ gnupg \
@@ -17,6 +19,7 @@ RUN apt-get update && apt-get install -y \
 		libzip-dev \
 		procps sudo unzip vim-tiny wget \
 		zlib1g-dev \
+	&& pecl install apcu-${APCU_VERSION} && docker-php-ext-enable apcu \
 	&& docker-php-ext-install -j$(nproc) bz2 \
 	&& docker-php-ext-configure gd --with-webp=/usr/include/ --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install -j$(nproc) gd \
 	&& docker-php-ext-install -j$(nproc) gettext \
